@@ -42,8 +42,6 @@ public class RunMed {
 	
 	
 	else {
-	    System.out.println( leftHeap.peekMax() );
-	    System.out.println( rightHeap.peekMin() );
 	    return (leftHeap.peekMax() + rightHeap.peekMin())/2.; 
 	}
 	
@@ -108,9 +106,9 @@ public class RunMed {
 	System.out.println( med.getMedian() ); //3
 	med.insert(7);
 	System.out.println( med.getMedian() ); //4
-	/*~~~V~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~V~~~
         med.insert(9);
 	System.out.println( med.getMedian() ); //5
+	/*~~~V~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~V~~~
 	~~~~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~*/
 
     }//end main()

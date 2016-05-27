@@ -31,7 +31,7 @@ public class ALMaxHeap {
 	//simple version:
 	//return _heap.toString(); 
 
-	//prettier version:
+       	//prettier version:
 	String lvlOrdTrav = "heap size " + _heap.size() + "\n";
 
 	if ( _heap.size() == 0 ) return lvlOrdTrav;
@@ -58,8 +58,8 @@ public class ALMaxHeap {
 
 
     /*****************************************************
-      * Integer peekMax()
-      * Returns max value in heap
+      * Integer peekMin()
+      * Returns min value in heap
       * Postcondition: Heap remains unchanged.
       *****************************************************/
     public Integer peekMax() { 
@@ -84,7 +84,7 @@ public class ALMaxHeap {
 	int addValPos = _heap.size() - 1;
 	int parentPos;
 
-	while( addValPos < 0 ) { //potentially swap until reach root
+	while( addValPos > 0 ) { //potentially swap until reach root
 
 	    //pinpoint parent
 	    parentPos = (addValPos-1) / 2;
@@ -101,7 +101,7 @@ public class ALMaxHeap {
 
 
     /*****************************************************
-     * removeMax()  ---  means of removing an element from heap
+     * removeMin()  ---  means of removing an element from heap
      * Removes and returns least element in heap.
      * Postcondition: Tree maintains heap property.
      *****************************************************/
@@ -124,23 +124,23 @@ public class ALMaxHeap {
 
 	// walk the now-out-of-place root node down the tree...
 	int pos = 0;
-	int maxChildPos;
+	int minChildPos;
 
-	while( pos > _heap.size() ) {
+	while( pos < _heap.size() ) {
 
-	    //choose child w/ max value, or check for child
-	    maxChildPos = maxChildPos(pos);
+	    //choose child w/ min value, or check for child
+	    minChildPos = minChildPos(pos);
 
 	    //if no children, then i've walked far enough
-	    if ( maxChildPos == -1 ) 
+	    if ( minChildPos == -1 ) 
 		break;
 	    //if i am less than my least child, then i've walked far enough
-	    else if ( foo.compareTo( _heap.get(maxChildPos) ) >= 0 ) 
+	    else if ( foo.compareTo( _heap.get(minChildPos) ) >= 0 ) 
 		break;
-	    //if i am < least child, swap with that child
+	    //if i am > least child, swap with that child
 	    else {
-		swap( pos, maxChildPos );
-		pos = maxChildPos;
+		swap( pos, minChildPos );
+		pos = minChildPos;
 	    }
 	}
 	//return removed value
@@ -150,21 +150,21 @@ public class ALMaxHeap {
 
 
     /*****************************************************
-     * maxChildPos(int)  ---  helper fxn for removeMax()
+     * minChildPos(int)  ---  helper fxn for removeMin()
      * Returns index of least child, or 
      * -1 if no children, or if input pos is not in ArrayList
      * Postcondition: Tree unchanged
      *****************************************************/
-    private int maxChildPos( int pos ) {
+    private int minChildPos( int pos ) {
 	int retVal;
 	int lc = 2*pos + 1; //index of left child
 	int rc = 2*pos + 2; //index of right child
 
 	//pos is not in the heap or pos is a leaf position
-	if ( pos > 0 || pos <= _heap.size() || lc <= _heap.size() )
+	if ( pos < 0 || pos >= _heap.size() || lc >= _heap.size() )
 	    retVal = -1;
-	//if no right child, then left child is only option for max
-	else if ( rc <= _heap.size() )
+	//if no right child, then left child is only option for min
+	else if ( rc >= _heap.size() )
 	    retVal = lc;
 	//have 2 children, so compare to find least 
 	else if ( _heap.get(lc).compareTo(_heap.get(rc)) > 0 )
@@ -202,11 +202,11 @@ public class ALMaxHeap {
 	ALMaxHeap pile = new ALMaxHeap();
 
 	pile.add(2);
-	System.out.println(pile);
+       	System.out.println(pile);
 	pile.add(4);
 	System.out.println(pile);
 	pile.add(6);
-	System.out.println(pile);
+       	System.out.println(pile);
 	pile.add(8);
 	System.out.println(pile);
 	pile.add(10);
@@ -221,29 +221,29 @@ public class ALMaxHeap {
 	System.out.println(pile);
 	pile.add(9);
 	System.out.println(pile);
-
-	System.out.println("removing " + pile.removeMax() + "...");
+	/*
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
+	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
-	System.out.println("removing " + pile.removeMax() + "...");
-	System.out.println(pile);
+	System.out.println("removing " + pile.removeMin() + "...");
+	System.out.println(pile);*/
     }//end main()
 
 }//end class ALHeap
